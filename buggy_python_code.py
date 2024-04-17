@@ -8,7 +8,6 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
-    # Index
     version = flask.request.args.get("urllib_version")
     url = flask.request.args.get("url")
     return fetch_website(version, url)
@@ -37,11 +36,10 @@ def fetch_website(urllib_version, url):
 
 
 def load_yaml(filename):
-    #Dock string
     stream = open(filename)
     deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
     return deserialized_data
-
+    
 def authenticate(password):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
